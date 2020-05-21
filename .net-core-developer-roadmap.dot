@@ -1,0 +1,26 @@
+digraph learning_roadmap {
+    node[shape=none, width=0, height=0, label=""];
+    edge[dir=none];
+
+    subgraph main {
+        head_topic [label = "ASP.NET Core developer"]
+        prerequisites [label = "Learn the Prerequisites"]
+
+        head_topic -> main1 -> main2 -> main3;
+        main3 -> main4 
+        
+        {rank=same; main1 -> prerequisites;}
+        {rank=same; csharp -> main2;}
+    }
+
+    subgraph csharp {
+        csharp [label = "C#"]
+        basic_c_sharp [label = "Learn the basics of C#"]
+        linq [label = "Learn LINQ"]
+
+        csharp1 -> csharp2 
+        {rank=same; csharp1 ->  csharp}
+        {rank=same; basic_c_sharp ->  csharp1}
+        {rank=same; linq -> csharp2}
+    }
+}
