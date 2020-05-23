@@ -2,25 +2,74 @@ digraph learning_roadmap {
     node[shape=none, width=0, height=0, label=""];
     edge[dir=none];
 
-    subgraph main {
-        head_topic [label = "ASP.NET Core developer"]
+    subgraph main_group {
+        main1 [label = "ASP.NET Core developer"]
         prerequisites [label = "Learn the Prerequisites"]
 
-        head_topic -> main1 -> main2 -> main3;
-        main3 -> main4 
+        main1 -> main2 -> main3 -> main4 -> main5
+        main5 -> main6 -> main7 -> main8 -> main9;
         
-        {rank=same; main1 -> prerequisites;}
-        {rank=same; csharp -> main2;}
+        {rank=same; main2 -> prerequisites}
+        {rank=same; cs -> main3}
+        {rank=same;  main5 -> ef}
+        {rank=same;  asp -> main6}
+        {rank=same;  main9 -> sql}
     }
 
-    subgraph csharp {
-        csharp [label = "C#"]
-        basic_c_sharp [label = "Learn the basics of C#"]
+    subgraph cs_group {
+        cs [label = "C#"]
+        cs_basic [label = "Learn the basics of C#"]
         linq [label = "Learn LINQ"]
 
-        csharp1 -> csharp2 
-        {rank=same; csharp1 ->  csharp}
-        {rank=same; basic_c_sharp ->  csharp1}
-        {rank=same; linq -> csharp2}
+        cs1 -> cs2 
+        {rank=same; cs1 ->  cs}
+        {rank=same; cs_basic ->  cs1}
+        {rank=same; linq -> cs2}
+    }
+
+    subgraph ef_group {
+        ef [label = "Entity"]
+
+        ef_basic [label = "Learn the basics of Entity Framework"]
+        ef_code_first [label = "Code First + Migrations"]
+        ef_tracking [label = "Change Tracker API"]
+        ef_loading [label = "Lazy Loading. Eager Loading, Explicit Loading"]
+
+        ef1 -> ef2 -> ef3 -> ef4 
+        {rank=same; ef -> ef1}
+        {rank=same; ef1 ->  ef_basic}
+        {rank=same; ef2 ->  ef_code_first}
+        {rank=same; ef3 -> ef_tracking}
+        {rank=same; ef4 -> ef_loading}
+    }
+
+    subgraph asp_group {
+        asp [label="ASP.NET Core Basics"]
+
+        mvc [label="MVC"]
+        rest [label="REST "]
+        razor_page [label="Razor Pages "]
+        razor_component [label="Razor Components "]
+        middlewares [label="Middlewares "]
+        filter [label="Filters & Attributes "]
+        setting [label="Application Settings & Configurations"]
+
+        asp1 -> asp2 -> asp3 -> asp4 -> asp5 -> asp6 -> asp7
+
+        {rank=same; asp1 -> asp}
+        {rank=same; mvc -> asp1}
+        {rank=same; rest -> asp2}
+        {rank=same; razor_page ->  asp3}
+        {rank=same; razor_component -> asp4}
+        {rank=same; middlewares -> asp5}
+        {rank=same; filter -> asp6}
+        {rank=same; setting -> asp7}
+    }
+
+    subgraph sql_group {
+        sql [label="SQL Fundamentals"]
+        sql_basic [label="Fundamentals about database design and SQL Syntax"]
+
+        {rank=same; sql -> sql_basic}
     }
 }
