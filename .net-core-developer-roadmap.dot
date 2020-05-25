@@ -8,12 +8,14 @@ digraph learning_roadmap {
 
         main1 -> main2 -> main3 -> main4 -> main5
         main5 -> main6 -> main7 -> main8 -> main9;
+        main9 -> main10 -> main11 -> main12 -> main13;
         
         {rank=same; main2 -> prerequisites}
         {rank=same; cs -> main3}
         {rank=same;  main5 -> ef}
         {rank=same;  asp -> main6}
         {rank=same;  main9 -> sql}
+        {rank=same;  general_skill -> main13}
     }
 
     subgraph cs_group {
@@ -72,4 +74,23 @@ digraph learning_roadmap {
 
         {rank=same; sql -> sql_basic}
     }
+
+    subgraph general_skill_group {
+        general_skill [label="General Development Skills"]
+        git [label="GIT - Version Control (GitHub, BitBucket, GitLab)"]
+        http [label="HTTP/HTTPS protocol Learn to search for solutions"]
+        search [label="Learn to search for solutions"]
+        dotnet_cli [label="Learn Dotnet CLI"]
+        data_structure [label="Data Structures and Algorithms"]
+
+
+        general1 -> general2 -> general3 -> general4 -> general5
+
+        {rank=same; general1 -> general_skill}
+        {rank=same; git -> general1}
+        {rank=same; http -> general2}
+        {rank=same; search -> general3}
+        {rank=same; dotnet_cli -> general4}
+        {rank=same; data_structure -> general5}
+    }  
 }
