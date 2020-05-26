@@ -3,19 +3,27 @@ digraph learning_roadmap {
     edge[dir=none];
 
     subgraph main_group {
-        main1 [label = "ASP.NET Core developer"]
+        main0 [label = "ASP.NET Core developer"]
         prerequisites [label = "Learn the Prerequisites"]
 
-        main1 -> main2 -> main3 -> main4 -> main5
-        main5 -> main6 -> main7 -> main8 -> main9;
-        main9 -> main10 -> main11 -> main12 -> main13;
+        main0 -> main1 
+        main1 -> main2 
+        main2 -> main3 [minlen=4] 
+        main3 -> main4 [minlen=4] 
+        main4 -> main5 [minlen=4] 
+
+        main5 -> main6 [minlen=4]
+        main6 -> main7 [minlen=5]
+        main7 -> main8 [minlen=5]
         
-        {rank=same; main2 -> prerequisites}
-        {rank=same; cs -> main3}
-        {rank=same;  main5 -> ef}
-        {rank=same;  asp -> main6}
-        {rank=same;  main9 -> sql}
-        {rank=same;  general_skill -> main13}
+        {rank=same; main1 -> prerequisites}
+        {rank=same; cs -> main2}
+        {rank=same;  main3 -> ef}
+
+        {rank=same;  asp -> main4}
+        {rank=same;  main5 -> sql}
+        {rank=same;  general_skill -> main6}
+        {rank=same;  main7-> di}
     }
 
     subgraph cs_group {
@@ -83,7 +91,6 @@ digraph learning_roadmap {
         dotnet_cli [label="Learn Dotnet CLI"]
         data_structure [label="Data Structures and Algorithms"]
 
-
         general1 -> general2 -> general3 -> general4 -> general5
 
         {rank=same; general1 -> general_skill}
@@ -93,4 +100,45 @@ digraph learning_roadmap {
         {rank=same; dotnet_cli -> general4}
         {rank=same; data_structure -> general5}
     }  
+
+    subgraph diGroup{
+        di [label="Dependency Injection"]
+        di_containers [label="DI Containers"]
+        scrutor [label="Scrutor"]
+        life_cycles [label="Life Cycles"]
+
+        di1 -> di2 -> di3 
+        {rank=same; di -> di2}
+        {rank=same; di1 -> di_containers}
+        {rank=same; di2 -> scrutor}
+        {rank=same; di3 -> life_cycles}
+
+        # DI Frameworks
+        ms_di [label="Microsoft.Extensions.DependencyInjection"]
+        autofac [label="Autofac"]
+        ninject [label="Ninject"]
+        castle_winsor [label="Castle Winsor"]
+        unity [label="Unity"]
+
+        di_container1 -> di_container2 -> di_container3 ->di_container4 -> di_container5
+
+        {rank=same; di_containers -> di_container1 [minlen=7] }
+        {rank=same; di_container1 -> ms_di}
+        {rank=same; di_container2 -> autofac}
+        {rank=same; di_container3 -> ninject}
+        {rank=same; di_container4 -> castle_winsor}
+        {rank=same; di_container5 -> unity}
+
+        # Scope
+        trasient [label="Trasient"]
+        scoped [label="Scoped"]
+        singleton [label="Singleton"]
+
+        life_cycle1 -> life_cycle2 -> life_cycle3
+
+        {rank=same; life_cycles -> life_cycle1}
+        {rank=same; life_cycle1 -> trasient}
+        {rank=same; life_cycle2 -> scoped}
+        {rank=same; life_cycle3 -> singleton}
+    }
 }
