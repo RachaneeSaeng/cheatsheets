@@ -14,7 +14,8 @@ digraph learning_roadmap {
 
         main5 -> main6 [minlen=4]
         main6 -> main7 [minlen=5]
-        main7 -> main8 [minlen=5]
+        main7 -> main8 [minlen=1]
+        main8 -> main9 [minlen=5]
         
         {rank=same; main1 -> prerequisites}
         {rank=same; cs -> main2}
@@ -24,6 +25,7 @@ digraph learning_roadmap {
         {rank=same;  main5 -> sql}
         {rank=same;  general_skill -> main6}
         {rank=same;  main7-> di}
+        {rank=same;  db -> main8}
     }
 
     subgraph cs_group {
@@ -140,5 +142,83 @@ digraph learning_roadmap {
         {rank=same; life_cycle1 -> trasient}
         {rank=same; life_cycle2 -> scoped}
         {rank=same; life_cycle3 -> singleton}
+    }
+
+    subgraph db {
+        db [label="Databases"]
+        relational_db [label="Relational"]
+        cloud_db [label="Cloud Databases"]
+        search_engine [label="Search Engines"]
+        no_sql [label="NoSQL"]
+
+        db1 -> db2 [minlen=6]
+        db2 -> db3 [minlen=5]
+        db3 ->  db4 [minlen=3]
+
+        {rank=same; db1 -> db}
+        {rank=same; relational_db -> db1}
+        {rank=same; cloud_db -> db2}
+        {rank=same; search_engine -> db3}
+        {rank=same; no_sql -> db4}
+
+        # Relational databases
+        sql_server [label="SQL Server"]
+        postgresql [label="PostgreSQL"]
+        mysql [label="MySQL"]
+        sqlite [label="SQLite"]
+
+        relational_db1 -> relational_db2 -> relational_db3 -> relational_db4
+
+        {rank=same; relational_db2 -> relational_db [minlen=5] }
+        {rank=same; sql_server -> relational_db1}
+        {rank=same; postgresql -> relational_db2}
+        {rank=same; mysql -> relational_db3}
+        {rank=same; sqlite -> relational_db4}
+
+        # Cloud Databases
+        azure_sql_database [label="Azure SQL Database"]
+        cosmos_db [label="Azure CosmosDB"]
+        rds [label="Amazon RDS"]
+        aurora [label="Amazon Aurora"]
+        dynamo_db [label="Amazon DynamoDB"]
+
+        cloud_db1 -> cloud_db2 -> cloud_db3 -> cloud_db4 -> cloud_db5
+
+        {rank=same; cloud_db1 -> cloud_db}
+        {rank=same; azure_sql_database -> cloud_db1}
+        {rank=same; cosmos_db -> cloud_db2}
+        {rank=same; rds -> cloud_db3}
+        {rank=same; aurora -> cloud_db4}
+        {rank=same; dynamo_db -> cloud_db5}
+
+        # Search Engines
+        elastic_search [label="ElasticSearch"]
+        solr [label="Solr"]
+        sphinx [label="Sphinx"]
+
+        search1 -> search2 -> search3
+
+        {rank=same; search1 -> search_engine}
+        {rank=same; elastic_search -> search1}
+        {rank=same; solr -> search2}
+        {rank=same; sphinx -> search3}
+
+        # NoSQL
+        mongo_db [label="MongoDB"]
+        redis [label="Redis"]
+        lite_db [label="LiteDB"]
+        cassandra [label="Apache Cassandra"]
+        raven_db [label="RavenDB"]
+        couch_db [label="CouchDB"]
+
+        no_sql1 -> no_sql2 -> no_sql3 -> no_sql4 -> no_sql5 -> no_sql6
+
+        {rank=same; no_sql1 -> no_sql}
+        {rank=same; mongo_db -> no_sql1}
+        {rank=same; redis -> no_sql2}
+        {rank=same; lite_db -> no_sql3}
+        {rank=same; cassandra -> no_sql4}
+        {rank=same; raven_db -> no_sql5}
+        {rank=same; couch_db -> no_sql6}
     }
 }
