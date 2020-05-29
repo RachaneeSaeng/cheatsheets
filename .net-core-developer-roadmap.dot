@@ -6,26 +6,26 @@ digraph learning_roadmap {
         main0 [label = "ASP.NET Core developer"]
         prerequisites [label = "Learn the Prerequisites"]
 
-        main0 -> main1 
         main1 -> main2 
-        main2 -> main3 [minlen=4] 
+        main2 -> main3 
         main3 -> main4 [minlen=4] 
         main4 -> main5 [minlen=4] 
+        main5 -> main6 [minlen=4] 
 
-        main5 -> main6 [minlen=4]
-        main6 -> main7 [minlen=5]
-        main7 -> main8 [minlen=1]
-        main8 -> main9 [minlen=5]
+        main6 -> main7 [minlen=4]
+        main7 -> main8 [minlen=5]
+        main8 -> main9 [minlen=1]
+        main9 -> main10 [minlen=5]
         
-        {rank=same; main1 -> prerequisites}
-        {rank=same; cs -> main2}
-        {rank=same;  main3 -> ef}
+        {rank=same; main2 -> prerequisites}
+        {rank=same; cs -> main3}
+        {rank=same; main4 -> ef}
 
-        {rank=same;  asp -> main4}
-        {rank=same;  main5 -> sql}
-        {rank=same;  general_skill -> main6}
-        {rank=same;  main7-> di}
-        {rank=same;  db -> main8}
+        {rank=same; asp -> main5}
+        {rank=same; main6 -> sql}
+        {rank=same; general_skill -> main7}
+        {rank=same; main8-> di}
+        {rank=same; db -> main9}
     }
 
     subgraph cs_group {
